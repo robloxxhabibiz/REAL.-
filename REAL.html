@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REAL - Your Ultimate Web Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== GLOBAL STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 5% 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s 0.2s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            animation: fadeInUp 1s 0.4s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== SECTION STYLES ===== */
+        section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===== USER TARGET SECTION ===== */
+        .user-targets {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .targets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .target-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .target-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .target-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== HUB WEB SECTION ===== */
+        .hub-web {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .hub-categories {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .category-btn {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hub-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .hub-link {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s;
+        }
+
+        .hub-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        /* ===== CODING PLAYGROUND ===== */
+        .playground {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .editor-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+        }
+
+        .editor-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            resize: vertical;
+        }
+
+        .preview {
+            margin-top: 2rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            min-height: 300px;
+            background: white;
+            padding: 1rem;
+        }
+
+        /* ===== AI ASSISTANT SECTION ===== */
+        .ai-assistant {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .chat-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+        }
+
+        .chat-status {
+            text-align: center;
+            padding: 1rem;
+            background: #f0f0f0;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .chat-messages {
+            height: 400px;
+            overflow-y: auto;
+            padding: 1rem;
+            background: #f9f9f9;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.user {
+            background: #667eea;
+            color: white;
+            margin-left: 20%;
+            text-align: right;
+        }
+
+        .message.ai {
+            background: #e9ecef;
+            color: #333;
+            margin-right: 20%;
+        }
+
+        .chat-input-container {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            position: relative;
+            animation: slideDown 0.3s;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 1.5rem;
+            top: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .footer-section a {
+            display: block;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #fff;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER & NAVIGATION ===== -->
+    <header>
+        <nav>
+            <div class="logo">REAL</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#hub">Hub Web</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#playground">Coding</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn btn-secondary" onclick="openModal('login')">Login</button>
+                <button class="btn btn-primary" onclick="openModal('signup')">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Welcome to REAL – Your Ultimate Web Hub</h1>
+            <p>Eksplorasi fitur lengkap untuk belajar, bermain, dan berkembang. Semua dalam satu platform modern dan interaktif.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('features')">Explore Features</button>
+                <button class="btn btn-secondary" onclick="scrollToSection('hub')">Go to Hub</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES SECTION ===== -->
+    <section class="features" id="features">
+        <h2 class="section-title">Fitur Unggulan</h2>
+        <div class="features-grid">
+            <div class="feature-card" onclick="scrollToSection('hub')">
+                <div class="feature-icon">🌐</div>
+                <h3>Web Portal</h3>
+                <p>Akses ratusan website populer dari berbagai kategori dalam satu tempat.</p>
+                <button class="btn btn-primary">Explore</button>
+            </div>
+            <div class="feature-card" onclick="openGamesModal()">
+                <div class="feature-icon">🎮</div>
+                <h3>Mini Games</h3>
+                <p>Mainkan game seru dan quiz interaktif untuk mengasah otak Anda.</p>
+                <button class="btn btn-primary">Play Now</button>
+            </div>
+            <div class="feature-card" onclick="scrollToSection('playground')">
+                <div class="feature-icon">💻</div>
+                <h3>Coding Playground</h3>
+                <p>Belajar HTML, CSS, JavaScript dengan editor interaktif real-time.</p>
+                <button class="btn btn-primary">Start Coding</button>
+            </div>
+            <div class="feature-card" onclick="openForumModal()">
+                <div class="feature-icon">💬</div>
+                <h3>Forum & Chat</h3>
+                <p>Diskusi dengan komunitas developer dan pelajar di seluruh dunia.</p>
+                <button class="btn btn-primary">Join Forum</button>
+            </div>
+            <div class="feature-card" onclick="openToolsModal()">
+                <div class="feature-icon">🛠️</div>
+                <h3>Developer Tools</h3>
+                <p>Kumpulan tools berguna untuk mempercepat pekerjaan developer.</p>
+                <button class="btn btn-primary">View Tools</button>
+            </div>
+            <div class="feature-card" onclick="scrollToSection('ai-assistant')">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Assistant</h3>
+                <p>Chat dengan AI cerdas yang bisa membantu menjawab pertanyaan Anda.</p>
+                <button class="btn btn-primary">Chat Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== USER TARGET SECTION ===== -->
+    <section class="user-targets">
+        <h2 class="section-title">Untuk Siapa REAL?</h2>
+        <div class="targets-grid">
+            <div class="target-card">
+                <div class="target-icon">🎓</div>
+                <h3>Anak Sekolah</h3>
+                <p>Belajar coding, main games edukatif, dan kembangkan kreativitas.</p>
+                <button class="btn btn-primary" onclick="scrollToSection('playground')">Explore</button>
+            </div>
+            <div class="target-card">
+                <div class="target-icon">📚</div>
+                <h3>Mahasiswa</h3>
+                <p>Akses tools developer, forum diskusi, dan resource pembelajaran.</p>
+                <button class="btn btn-primary" onclick="openToolsModal()">Explore</button>
+            </div>
+            <div class="target-card">
+                <div class="target-icon">👨‍💻</div>
+                <h3>Developer</h3>
+                <p>Playground coding, tools profesional, dan komunitas developer.</p>
+                <button class="btn btn-primary" onclick="scrollToSection('playground')">Explore</button>
+            </div>
+            <div class="target-card">
+                <div class="target-icon">🎯</div>
+                <h3>Gamer</h3>
+                <p>Koleksi mini games seru dan tantangan quiz interaktif.</p>
+                <button class="btn btn-primary" onclick="openGamesModal()">Explore</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HUB WEB SECTION ===== -->
+    <section class="hub-web" id="hub">
+        <h2 class="section-title">Hub Web</h2>
+        <div class="hub-categories">
+            <button class="category-btn active" onclick="filterHub('all')">Semua</button>
+            <button class="category-btn" onclick="filterHub('education')">Pendidikan</button>
+            <button class="category-btn" onclick="filterHub('games')">Game</button>
+            <button class="category-btn" onclick="filterHub('tools')">Tools</button>
+            <button class="category-btn" onclick="filterHub('social')">Sosial</button>
+            <button class="category-btn" onclick="filterHub('developer')">Developer</button>
+        </div>
+        <div class="hub-links" id="hubLinks">
+            <!-- Links will be populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- ===== CODING PLAYGROUND ===== -->
+    <section class="playground" id="playground">
+        <h2 class="section-title">Interactive Coding Playground</h2>
+        <div class="editor-container">
+            <div class="editor-controls">
+                <button class="btn btn-primary" onclick="runCode()">▶ Run</button>
+                <button class="btn btn-secondary" onclick="clearCode()">Clear</button>
+                <button class="btn btn-secondary" onclick="saveCode()">💾 Save</button>
+            </div>
+            <textarea id="codeEditor" placeholder="Tulis kode HTML, CSS, dan JavaScript di sini..."><!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 { color: #667eea; }
+    </style>
+</head>
+<body>
+    <h1>Hello from REAL!</h1>
+    <button onclick="alert('Welcome to REAL Playground!')">Click Me</button>
+</body>
+</html></textarea>
+            <div class="preview" id="preview"></div>
+        </div>
+    </section>
+
+    <!-- ===== AI ASSISTANT SECTION ===== -->
+    <section class="ai-assistant" id="ai-assistant">
+        <h2 class="section-title">AI Assistant</h2>
+        <div class="chat-container">
+            <div class="chat-status" id="chatStatus">
+                <p id="statusText">Anda belum login. Chat akan tersedia tanpa history.</p>
+                <button class="btn btn-primary" onclick="openModal('login')" id="loginPrompt">Login untuk menyimpan history</button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message ai">
+                    <strong>AI Assistant:</strong><br>
+                    Halo! Saya AI Assistant REAL. Bagaimana saya bisa membantu Anda hari ini? 😊
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Ketik pertanyaan Anda di sini..." onkeypress="handleChatEnter(event)">
+                <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>REAL</h3>
+                <p>Your Ultimate Web Hub untuk belajar, bermain, dan berkembang.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#features">Features</a>
+                <a href="#hub">Hub Web</a>
+                <a href="#playground">Coding</a>
+                <a href="#ai-assistant">AI Assistant</a>
+            </div>
+            <div class="footer-section">
+                <h3>Kontak</h3>
+                <p>Email: info@realwebhub.com</p>
+                <p>Phone: +62 123 4567 890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📷</a>
+                    <a href="#">💼</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 REAL Web Hub. All rights reserved. | <a href="#" style="color: rgba(255,255,255,0.8)">Terms</a> | <a href="#" style="color: rgba(255,255,255,0.8)">Privacy</a></p>
+        </div>
+    </footer>
+
+    <!-- ===== LOGIN MODAL ===== -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('login')">&times;</span>
+            <h2>Login to REAL</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== SIGNUP MODAL ===== -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('signup')">&times;</span>
+            <h2>Sign Up to REAL</h2>
+            <form onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== GAMES MODAL ===== -->
+    <div id="gamesModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('games')">&times;</span>
+            <h2>🎮 Mini Games</h2>
+            <div style="display: grid; gap: 1rem;">
+                <button class="btn btn-primary" onclick="startQuiz()">🧠 Quiz Challenge</button>
+                <button class="btn btn-primary" onclick="startMemoryGame()">🃏 Memory Game</button>
+                <button class="btn btn-primary" onclick="startTypingGame()">⌨️ Typing Speed Test</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FORUM MODAL ===== -->
+    <div id="forumModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('forum')">&times;</span>
+            <h2>💬 Forum & Chat</h2>
+            <p>Forum fitur akan segera hadir! Join komunitas developer dan pelajar untuk diskusi, sharing knowledge, dan networking.</p>
+            <button class="btn btn-primary" style="width: 100%;">Coming Soon</button>
+        </div>
+    </div>
+
+    <!-- ===== TOOLS MODAL ===== -->
+    <div id="toolsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('tools')">&times;</span>
+            <h2>🛠️ Developer Tools</h2>
+            <div style="display: grid; gap: 1rem;">
+                <button class="btn btn-primary" onclick="openColorPicker()">🎨 Color Picker</button>
+                <button class="btn btn-primary" onclick="openJsonFormatter()">📝 JSON Formatter</button>
+                <button class="btn btn-primary" onclick="openBase64Tool()">🔐 Base64 Encoder/Decoder</button>
+                <button class="btn btn-primary" onclick="openRegexTester()">🔍 Regex Tester</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== GLOBAL VARIABLES =====
+        let currentUser = null;
+        let chatHistory = {};
+        let userLanguage = 'id'; // Default Indonesian
+
+        // Detect user language from browser
+        function detectLanguage() {
+            const browserLang = navigator.language || navigator.userLanguage;
+            userLanguage = browserLang.startsWith('id') ? 'id' : 'en';
+            updateAIGreeting();
+        }
+
+        // Update AI greeting based on language
+        function updateAIGreeting() {
+            const greetings = {
+                id: 'Halo! Saya AI Assistant REAL. Bagaimana saya bisa membantu Anda hari ini? 😊',
+                en: 'Hello! I\'m REAL AI Assistant. How can I help you today? 😊'
+            };
+            
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = `
+                <div class="message ai">
+                    <strong>AI Assistant:</strong><br>
+                    ${greetings[userLanguage]}
+                </div>
+            `;
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            detectLanguage();
+            populateHubLinks();
+        };
+
+        // ===== NAVIGATION FUNCTIONS =====
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            const headerOffset = 80;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+
+        // ===== MODAL FUNCTIONS =====
+        function openModal(type) {
+            document.getElementById(type + 'Modal').style.display = 'block';
+        }
+
+        function closeModal(type) {
+            document.getElementById(type + 'Modal').style.display = 'none';
+        }
+
+        function openGamesModal() {
+            openModal('games');
+        }
+
+        function openForumModal() {
+            openModal('forum');
+        }
+
+        function openToolsModal() {
+            openModal('tools');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // ===== AUTH FUNCTIONS =====
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Simulate login (in real app, this would be API call)
+            currentUser = {
+                name: email.split('@')[0],
+                email: email
+            };
+            
+            // Load user's chat history
+            if (chatHistory[email]) {
+                loadChatHistory(email);
+            }
+            
+            updateAuthStatus();
+            closeModal('login');
+            
+            alert(userLanguage === 'id' ? 'Login berhasil!' : 'Login successful!');
+        }
+
+        function handleSignup(event) {
+            event.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            
+            // Simulate signup
+            currentUser = {
+                name: name,
+                email: email
+            };
+            
+            chatHistory[email] = [];
+            
+            updateAuthStatus();
+            closeModal('signup');
+            
+            alert(userLanguage === 'id' ? 'Akun berhasil dibuat!' : 'Account created successfully!');
+        }
+
+        function updateAuthStatus() {
+            const statusText = document.getElementById('statusText');
+            const loginPrompt = document.getElementById('loginPrompt');
+            
+            if (currentUser) {
+                statusText.textContent = userLanguage === 'id' 
+                    ? `Selamat datang, ${currentUser.name}! Chat history Anda akan disimpan.`
+                    : `Welcome, ${currentUser.name}! Your chat history will be saved.`;
+                loginPrompt.style.display = 'none';
+            }
+        }
+
+        // ===== HUB WEB FUNCTIONS =====
+        const hubData = {
+            education: [
+                { name: 'Khan Academy', url: 'https://khanacademy.org', category: 'education' },
+                { name: 'Coursera', url: 'https://coursera.org', category: 'education' },
+                { name: 'edX', url: 'https://edx.org', category: 'education' },
+                { name: 'Duolingo', url: 'https://duolingo.com', category: 'education' }
+            ],
+            games: [
+                { name: 'Chess.com', url: 'https://chess.com', category: 'games' },
+                { name: 'Miniclip', url: 'https://miniclip.com', category: 'games' },
+                { name: 'Poki', url: 'https://poki.com', category: 'games' },
+                { name: 'Crazy Games', url: 'https://crazygames.com', category: 'games' }
+            ],
+            tools: [
+                { name: 'Canva', url: 'https://canva.com', category: 'tools' },
+                { name: 'Figma', url: 'https://figma.com', category: 'tools' },
+                { name: 'Notion', url: 'https://notion.so', category: 'tools' },
+                { name: 'Trello', url: 'https://trello.com', category: 'tools' }
+            ],
+            social: [
+                { name: 'Reddit', url: 'https://reddit.com', category: 'social' },
+                { name: 'Discord', url: 'https://discord.com', category: 'social' },
+                { name: 'Twitter', url: 'https://twitter.com', category: 'social' },
+                { name: 'LinkedIn', url: 'https://linkedin.com', category: 'social' }
+            ],
+            developer: [
+                { name: 'GitHub', url: 'https://github.com', category: 'developer' },
+                { name: 'Stack Overflow', url: 'https://stackoverflow.com', category: 'developer' },
+                { name: 'MDN Web Docs', url: 'https://developer.mozilla.org', category: 'developer' },
+                { name: 'CodePen', url: 'https://codepen.io', category: 'developer' }
+            ]
+        };
+
+        function populateHubLinks() {
+            const container = document.getElementById('hubLinks');
+            const allLinks = Object.values(hubData).flat();
+            
+            container.innerHTML = allLinks.map(link => `
+                <a href="${link.url}" target="_blank" class="hub-link" data-category="${link.category}">
+                    <h4>${link.name}</h4>
+                    <p>Visit →</p>
+                </a>
+            `).join('');
+        }
+
+        function filterHub(category) {
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const links = document.querySelectorAll('.hub-link');
+            links.forEach(link => {
+                if (category === 'all' || link.dataset.category === category) {
+                    link.style.display = 'block';
+                } else {
+                    link.style.display = 'none';
+                }
+            });
+        }
+
+        // ===== CODING PLAYGROUND FUNCTIONS =====
+        function runCode() {
+            const code = document.getElementById('codeEditor').value;
+            const preview = document.getElementById('preview');
+            
+            // Create a sandboxed iframe
+            preview.innerHTML = '<iframe style="width:100%; height:100%; border:none;"></iframe>';
+            const iframe = preview.querySelector('iframe');
+            
+            iframe.contentWindow.document.open();
+            iframe.contentWindow.document.write(code);
+            iframe.contentWindow.document.close();
+        }
+
+        function clearCode() {
+            if (confirm(userLanguage === 'id' ? 'Hapus semua kode?' : 'Clear all code?')) {
+                document.getElementById('codeEditor').value = '';
+                document.getElementById('preview').innerHTML = '';
+            }
+        }
+
+        function saveCode() {
+            const code = document.getElementById('codeEditor').value;
+            const blob = new Blob([code], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'real-code.html';
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            alert(userLanguage === 'id' ? 'Kode berhasil disimpan!' : 'Code saved successfully!');
+        }
+
+        // ===== AI ASSISTANT FUNCTIONS =====
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // Save to history if logged in
+            if (currentUser) {
+                if (!chatHistory[currentUser.email]) {
+                    chatHistory[currentUser.email] = [];
+                }
+                chatHistory[currentUser.email].push({ type: 'user', message: message });
+            }
+            
+            // Simulate AI response
+            setTimeout(() => {
+                const response = generateAIResponse(message);
+                addMessage(response, 'ai');
+                
+                // Save AI response to history
+                if (currentUser) {
+                    chatHistory[currentUser.email].push({ type: 'ai', message: response });
+                }
+            }, 1000);
+        }
+
+        function handleChatEnter(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function addMessage(text, type) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            
+            const label = type === 'user' ? (userLanguage === 'id' ? 'Anda' : 'You') : 'AI Assistant';
+            messageDiv.innerHTML = `<strong>${label}:</strong><br>${text}`;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function generateAIResponse(userMessage) {
+            const lowerMessage = userMessage.toLowerCase();
+            
+            // Language-specific responses
+            const responses = {
+                id: {
+                    greeting: 'Halo! Ada yang bisa saya bantu?',
+                    coding: 'Tentu! Saya bisa membantu Anda dengan coding. Anda bisa mencoba Coding Playground kami untuk belajar HTML, CSS, dan JavaScript secara interaktif.',
+                    features: 'REAL memiliki banyak fitur: Web Portal, Mini Games, Coding Playground, Forum, Developer Tools, dan tentunya saya - AI Assistant! Fitur mana yang ingin Anda ketahui lebih lanjut?',
+                    games: 'Kami punya Quiz Challenge, Memory Game, dan Typing Speed Test. Klik tombol Features dan pilih Mini Games untuk mulai bermain!',
+                    help: 'Saya di sini untuk membantu! Anda bisa bertanya tentang fitur REAL, cara coding, atau topik apapun. Bagaimana saya bisa membantu Anda?',
+                    thanks: 'Sama-sama! Senang bisa membantu. Ada yang lain yang ingin ditanyakan?',
+                    default: 'Terima kasih atas pertanyaannya! Saya adalah AI Assistant REAL yang siap membantu Anda menjelajahi berbagai fitur platform kami. Apakah ada yang spesifik yang ingin Anda ketahui?'
+                },
+                en: {
+                    greeting: 'Hello! How can I help you?',
+                    coding: 'Sure! I can help you with coding. Try our Coding Playground to learn HTML, CSS, and JavaScript interactively.',
+                    features: 'REAL has many features: Web Portal, Mini Games, Coding Playground, Forum, Developer Tools, and of course me - AI Assistant! Which feature would you like to know more about?',
+                    games: 'We have Quiz Challenge, Memory Game, and Typing Speed Test. Click Features and select Mini Games to start playing!',
+                    help: 'I\'m here to help! You can ask about REAL features, how to code, or any topic. How can I assist you?',
+                    thanks: 'You\'re welcome! Happy to help. Anything else you\'d like to know?',
+                    default: 'Thank you for your question! I\'m REAL AI Assistant ready to help you explore our platform features. Is there anything specific you\'d like to know?'
+                }
+            };
+            
+            const lang = responses[userLanguage];
+            
+            // Response logic
+            if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('halo') || lowerMessage.includes('hai')) {
+                return lang.greeting;
+            } else if (lowerMessage.includes('coding') || lowerMessage.includes('code') || lowerMessage.includes('programming') || lowerMessage.includes('belajar')) {
+                return lang.coding;
+            } else if (lowerMessage.includes('feature') || lowerMessage.includes('fitur') || lowerMessage.includes('what can')) {
+                return lang.features;
+            } else if (lowerMessage.includes('game') || lowerMessage.includes('play') || lowerMessage.includes('main')) {
+                return lang.games;
+            } else if (lowerMessage.includes('help') || lowerMessage.includes('bantu')) {
+                return lang.help;
+            } else if (lowerMessage.includes('thank') || lowerMessage.includes('terima kasih')) {
+                return lang.thanks;
+            } else {
+                return lang.default;
+            }
+        }
+
+        function loadChatHistory(email) {
+            const messagesContainer = document.getElementById('chatMessages');
+            messagesContainer.innerHTML = '';
+            
+            chatHistory[email].forEach(msg => {
+                addMessage(msg.message, msg.type);
+            });
+        }
+
+        // ===== GAMES FUNCTIONS =====
+        function startQuiz() {
+            closeModal('games');
+            alert(userLanguage === 'id' 
+                ? '🧠 Quiz Challenge akan segera dimulai! Fitur ini dalam pengembangan.'
+                : '🧠 Quiz Challenge starting soon! This feature is under development.');
+        }
+
+        function startMemoryGame() {
+            closeModal('games');
+            alert(userLanguage === 'id'
+                ? '🃏 Memory Game akan segera dimulai! Fitur ini dalam pengembangan.'
+                : '🃏 Memory Game starting soon! This feature is under development.');
+        }
+
+        function startTypingGame() {
+            closeModal('games');
+            alert(userLanguage === 'id'
+                ? '⌨️ Typing Speed Test akan segera dimulai! Fitur ini dalam pengembangan.'
+                : '⌨️ Typing Speed Test starting soon! This feature is under development.');
+        }
+
+        // ===== TOOLS FUNCTIONS =====
+        function openColorPicker() {
+            closeModal('tools');
+            alert(userLanguage === 'id'
+                ? '🎨 Color Picker tool akan segera tersedia!'
+                : '🎨 Color Picker tool coming soon!');
+        }
+
+        function openJsonFormatter() {
+            closeModal('tools');
+            alert(userLanguage === 'id'
+                ? '📝 JSON Formatter tool akan segera tersedia!'
+                : '📝 JSON Formatter tool coming soon!');
+        }
+
+        function openBase64Tool() {
+            closeModal('tools');
+            alert(userLanguage === 'id'
+                ? '🔐 Base64 Tool akan segera tersedia!'
+                : '🔐 Base64 Tool coming soon!');
+        }
+
+        function openRegexTester() {
+            closeModal('tools');
+            alert(userLanguage === 'id'
+                ? '🔍 Regex Tester akan segera tersedia!'
+                : '🔍 Regex Tester coming soon!');
+        }
+
+        // ===== SMOOTH SCROLLING FOR NAVIGATION =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
